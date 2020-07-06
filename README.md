@@ -7,7 +7,7 @@
 Inside your bootstrap/app.php file, add:
 
 ```php
-$app->register(\Vinhson\ControllerMakeCommand::class);
+$app->register(\Vinhson\LumenGeneratorServiceProvider::class);
 ```
 ### Commands：
 <div>
