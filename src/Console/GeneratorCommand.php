@@ -73,7 +73,22 @@ abstract class GeneratorCommand extends Command
      * @param  string $name
      * @return string
      */
-    abstract protected function buildClass($name);
+    protected function buildClass($name)
+    {
+        $stub = $this->files->get($this->getStub());
+
+        return str_replace(
+            [
+                "namespace DummyNamespace;",
+                "DummyClass",
+            ],
+            [
+                "namespace {$this->getDefaultNamespace()};",
+                $name,
+            ],
+            $stub
+        );
+    }
 
     /**
      * Get the stub file for the generator.

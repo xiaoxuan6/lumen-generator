@@ -2,26 +2,28 @@
 
 namespace Vinhson\Console;
 
-class ControllerMakeCommand extends GeneratorCommand
+class MiddlewareMakeCommand extends GeneratorCommand
 {
     /**
-     * @var string
-     */
-    protected $type = 'Http\Controllers';
-
-    /**
-     * The console command signature.
+     * The type of class being generated.
      *
      * @var string
      */
-    protected $name = 'make:controller';
+    protected $type = "Http\\Middleware";
+
+    /**
+     * The console command name.
+     *
+     * @var string
+     */
+    protected $name = 'make:middleware';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new controller file';
+    protected $description = 'Create a new middleware class';
 
     /**
      * Get the stub file for the generator.
@@ -30,7 +32,6 @@ class ControllerMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__ . "/stubs/controller.stub";
+        return __DIR__.'/stubs/middleware.stub';
     }
-
 }

@@ -2,26 +2,28 @@
 
 namespace Vinhson\Console;
 
-class ControllerMakeCommand extends GeneratorCommand
+use Illuminate\Support\Str;
+
+class ModelMakeCommand extends GeneratorCommand
 {
     /**
      * @var string
      */
-    protected $type = 'Http\Controllers';
+    protected $type = 'Models';
 
     /**
      * The console command signature.
      *
      * @var string
      */
-    protected $name = 'make:controller';
+    protected $name = 'make:model';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new controller file';
+    protected $description = 'Create a new model file';
 
     /**
      * Get the stub file for the generator.
@@ -30,7 +32,7 @@ class ControllerMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__ . "/stubs/controller.stub";
+        return __DIR__ . "/stubs/model.stub";
     }
 
 }

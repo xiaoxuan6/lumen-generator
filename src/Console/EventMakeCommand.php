@@ -2,26 +2,26 @@
 
 namespace Vinhson\Console;
 
-class ControllerMakeCommand extends GeneratorCommand
+class EventMakeCommand extends GeneratorCommand
 {
     /**
      * @var string
      */
-    protected $type = 'Http\Controllers';
+    protected $type = 'Events';
 
     /**
      * The console command signature.
      *
      * @var string
      */
-    protected $name = 'make:controller';
+    protected $name = 'make:event';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new controller file';
+    protected $description = 'Create a new event file';
 
     /**
      * Get the stub file for the generator.
@@ -30,7 +30,7 @@ class ControllerMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__ . "/stubs/controller.stub";
+        return __DIR__ . "/stubs/event.stub";
     }
 
 }
