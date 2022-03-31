@@ -1,11 +1,12 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: james.xue
- * Date: 2020/7/5
- * Time: 17:55
+ * This file is part of PHP CS Fixer.
+ *
+ * (c) vinhson <15227736751@qq.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
  */
-
 namespace Vinhson\Console;
 
 use Illuminate\Support\Str;
@@ -30,7 +31,7 @@ abstract class GeneratorCommand extends Command
     /**
      * Create a new controller install command instance.
      *
-     * @param  \Illuminate\Filesystem\Filesystem $files
+     * @param \Illuminate\Filesystem\Filesystem $files
      * @return void
      */
     public function __construct(Filesystem $files)
@@ -51,12 +52,13 @@ abstract class GeneratorCommand extends Command
 
         if ($this->alreadyExists($name)) {
             $this->error($name . ' already exists!');
+
             return false;
         }
 
         $namespace = $this->getDefaultNamespace();
 
-        if (!$this->files->exists($namespace)) {
+        if (! $this->files->exists($namespace)) {
             $this->makeDirectory($namespace);
         }
 
@@ -70,7 +72,7 @@ abstract class GeneratorCommand extends Command
     /**
      * Build the class with the given name.
      *
-     * @param  string $name
+     * @param string $name
      * @return string
      */
     protected function buildClass($name)
@@ -79,8 +81,8 @@ abstract class GeneratorCommand extends Command
 
         return str_replace(
             [
-                "namespace DummyNamespace;",
-                "DummyClass",
+                'namespace DummyNamespace;',
+                'DummyClass',
             ],
             [
                 "namespace {$this->getDefaultNamespace()};",
@@ -110,12 +112,12 @@ abstract class GeneratorCommand extends Command
     /**
      * Build the directory for the class if necessary.
      *
-     * @param  string $path
+     * @param string $path
      * @return string
      */
     protected function makeDirectory($path)
     {
-        if (!$this->files->isDirectory($path)) {
+        if (! $this->files->isDirectory($path)) {
             $this->files->makeDirectory($path, 0777, true, true);
         }
 
@@ -125,7 +127,7 @@ abstract class GeneratorCommand extends Command
     /**
      * Determine if the class already exists.
      *
-     * @param  string $rawName
+     * @param string $rawName
      * @return bool
      */
     protected function alreadyExists($rawName)
@@ -136,12 +138,12 @@ abstract class GeneratorCommand extends Command
     /**
      * Get the destination class path.
      *
-     * @param  string $name
+     * @param string $name
      * @return string
      */
     protected function getPath($name)
     {
-        return $this->getDefaultNamespace() . "\\" . trim($name, "/") . '.php';
+        return $this->getDefaultNamespace() . '\\' . trim($name, '/') . '.php';
     }
 
     /**

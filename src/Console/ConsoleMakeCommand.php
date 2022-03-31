@@ -1,11 +1,12 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: james.xue
- * Date: 2020/7/5
- * Time: 19:35
+ * This file is part of PHP CS Fixer.
+ *
+ * (c) vinhson <15227736751@qq.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
  */
-
 namespace Vinhson\Console;
 
 class ConsoleMakeCommand extends GeneratorCommand
@@ -13,14 +14,14 @@ class ConsoleMakeCommand extends GeneratorCommand
     /**
      * @var string
      */
-    protected $type = "Console\\Commands";
+    protected $type = 'Console\\Commands';
 
     /**
      * The console command signature.
      *
      * @var string
      */
-    protected $name = "make:command";
+    protected $name = 'make:command';
 
     /**
      * The console command description.
@@ -36,7 +37,6 @@ class ConsoleMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__ . "/stubs/console.stub";
+        return __DIR__ . '/stubs/console.stub';
     }
-
 }

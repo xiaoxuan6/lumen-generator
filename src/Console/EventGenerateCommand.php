@@ -1,11 +1,17 @@
 <?php
-
+/**
+ * This file is part of PHP CS Fixer.
+ *
+ * (c) vinhson <15227736751@qq.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
 namespace Vinhson\Console;
 
-use App\Providers\EventServiceProvider;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Illuminate\Console\Command;
+use App\Providers\EventServiceProvider;
 
 class EventGenerateCommand extends Command
 {
@@ -42,17 +48,17 @@ class EventGenerateCommand extends Command
     /**
      * Make the event and listeners for the given event.
      *
-     * @param  string $event
-     * @param  array $listeners
+     * @param string $event
+     * @param array $listeners
      * @return void
      */
     protected function makeEventAndListeners($event, $listeners)
     {
-        if (!Str::contains($event, '\\')) {
+        if (! Str::contains($event, '\\')) {
             return;
         }
 
-        $event = substr($event, strripos($event, "\\") + 1);
+        $event = substr($event, strripos($event, '\\') + 1);
 
         $this->callSilent('make:event', ['name' => $event]);
 
@@ -62,8 +68,8 @@ class EventGenerateCommand extends Command
     /**
      * Make the listeners for the given event.
      *
-     * @param  string $event
-     * @param  array $listeners
+     * @param string $event
+     * @param array $listeners
      * @return void
      */
     protected function makeListeners($event, $listeners)
@@ -71,7 +77,7 @@ class EventGenerateCommand extends Command
         foreach ($listeners as $listener) {
             $listener = preg_replace('/@.+$/', '', $listener);
 
-            $listener = substr($listener, strripos($listener, "\\") + 1);
+            $listener = substr($listener, strripos($listener, '\\') + 1);
 
             $this->callSilent('make:listener', array_filter(
                 ['name' => $listener, '--event' => $event]

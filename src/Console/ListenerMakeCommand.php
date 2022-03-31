@@ -1,8 +1,14 @@
 <?php
-
+/**
+ * This file is part of PHP CS Fixer.
+ *
+ * (c) vinhson <15227736751@qq.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
 namespace Vinhson\Console;
 
-use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\InputOption;
 
 class ListenerMakeCommand extends GeneratorCommand
@@ -34,19 +40,19 @@ class ListenerMakeCommand extends GeneratorCommand
     protected function getStub()
     {
         return $this->option('event')
-            ? __DIR__.'/stubs/listener.stub'
-            : __DIR__.'/stubs/listener-plain.stub';
+            ? __DIR__ . '/stubs/listener.stub'
+            : __DIR__ . '/stubs/listener-plain.stub';
     }
 
     /**
      * Build the class with the given name.
      *
-     * @param  string $name
+     * @param string $name
      * @return string
      */
     protected function buildClass($name)
     {
-        $event = $this->option("event");
+        $event = $this->option('event');
 
         return $event != null ? $this->makeEvent($name, $event) : parent::buildClass($name);
     }
@@ -54,18 +60,18 @@ class ListenerMakeCommand extends GeneratorCommand
     /**
      * Make build with event the class.
      *
-     * @param  string $name
-     * @param  string $stub
+     * @param string $name
+     * @param string $stub
      * @return string
      */
     protected function makeEvent($name, $event)
     {
-        $this->callSilent("make:event", ["name" => $event]);
+        $this->callSilent('make:event', ['name' => $event]);
 
         return str_replace(
             [
-                "DummyFullEvent",
-                "DummyEvent",
+                'DummyFullEvent',
+                'DummyEvent',
             ],
             [
                 $this->getEventNamespace($event),
@@ -78,7 +84,7 @@ class ListenerMakeCommand extends GeneratorCommand
     /**
      * Get the event nameapace.
      *
-     * @param  string $name
+     * @param string $name
      * @return string
      */
     protected function getEventNamespace($eventName)
@@ -97,5 +103,4 @@ class ListenerMakeCommand extends GeneratorCommand
             ['event', 'e', InputOption::VALUE_OPTIONAL, 'The event class being listened for'],
         ];
     }
-
 }

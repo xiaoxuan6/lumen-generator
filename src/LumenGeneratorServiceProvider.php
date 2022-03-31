@@ -1,10 +1,15 @@
 <?php
-
+/**
+ * This file is part of PHP CS Fixer.
+ *
+ * (c) vinhson <15227736751@qq.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
 namespace Vinhson;
 
-use Vinhson\Console;
-use Illuminate\Support\Str;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\{ServiceProvider, Str};
 use Illuminate\Database\Console\Factories\FactoryMakeCommand;
 
 class LumenGeneratorServiceProvider extends ServiceProvider
@@ -22,7 +27,7 @@ class LumenGeneratorServiceProvider extends ServiceProvider
             Console\KeyGenerateCommand::class,
         ]);
 
-        if (!Str::startsWith($this->app->environment(), "prod")) {
+        if (! Str::startsWith($this->app->environment(), 'prod')) {
             $this->commands([
                 Console\ControllerMakeCommand::class,
                 Console\ConsoleMakeCommand::class,
@@ -42,7 +47,5 @@ class LumenGeneratorServiceProvider extends ServiceProvider
                 FactoryMakeCommand::class,
             ]);
         }
-
     }
-
 }
