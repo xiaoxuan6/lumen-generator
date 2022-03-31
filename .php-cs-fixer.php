@@ -1,7 +1,7 @@
 <?php
 
 $header = <<<HEADER
-This file is part of PHP CS Fixer.
+This file is part of Lumen Generator package.
 
 (c) vinhson <15227736751@qq.com>
 
@@ -17,7 +17,6 @@ $finder = PhpCsFixer\Finder::create()
         __DIR__ . '/vendor',
     ])
     ->name('*.php')
-    ->notName('*.blade.php')
     ->ignoreDotFiles(true)
     ->ignoreVCS(true);
 
